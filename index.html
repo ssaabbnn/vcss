@@ -9,6 +9,12 @@
     <title>❤️ A Special Valentine's Message ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             background-color: #ff99cc;
             display: flex;
@@ -16,23 +22,22 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            margin: 0;
             font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
-            overflow-x: hidden;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 800px;
-            padding: 20px;
+            margin: 0 auto;
+            padding: 10px;
         }
 
         .gift-wrapper {
-            width: 250px;
-            height: 250px;
-            margin: 0 auto;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
         }
@@ -46,48 +51,84 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 10px;
         }
 
         .click-me {
             color: white;
-            font-size: 1.2em;
+            font-size: 1.1em;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: bounce 1s infinite;
-            width: 80%;
-            margin: 0 auto;
-            padding: 10px;
         }
 
         #messageContent {
             display: none;
-            margin-top: 20px;
+            width: 100%;
         }
 
         .message {
-            padding: 20px;
+            padding: 15px;
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             margin-top: 20px;
+            font-size: 0.95em;
         }
 
         .heart {
-            font-size: 60px;
+            font-size: 40px;
             color: #ff0066;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: heartbeat 1s infinite;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         .couple-image {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            margin: 20px auto;
+            margin: 15px auto;
             object-fit: cover;
-            border: 5px solid #ff3366;
+            border: 4px solid #ff3366;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             display: block;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .gallery-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff3366;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        .message h1 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .message p {
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .signature {
+            margin-top: 15px;
+            font-style: italic;
         }
 
         @keyframes bounce {
@@ -101,19 +142,42 @@
             100% { transform: scale(1); }
         }
 
-        @media (max-width: 768px) {
+        /* Tablet and larger screens */
+        @media (min-width: 768px) {
             .gift-wrapper {
+                width: 250px;
+                height: 250px;
+            }
+
+            .couple-image {
                 width: 200px;
                 height: 200px;
+                border-width: 5px;
             }
-            
-            .message {
-                padding: 15px;
-                font-size: 0.9em;
+
+            .image-gallery {
+                flex-direction: row;
+                justify-content: center;
+                gap: 30px;
             }
-            
+
+            .gallery-image {
+                width: 200px;
+                height: 200px;
+                border-width: 5px;
+            }
+
             .heart {
-                font-size: 40px;
+                font-size: 60px;
+            }
+
+            .message {
+                padding: 20px;
+                font-size: 1em;
+            }
+
+            .message h1 {
+                font-size: 1.8em;
             }
         }
     </style>
@@ -129,6 +193,12 @@
         <div id="messageContent">
             <div class="heart">❤️</div>
             <img src="https://imagizer.imageshack.com/v2/553x738q90/r/923/KcQdGN.jpg" alt="Couple Photo" class="couple-image">
+            
+            <div class="image-gallery">
+                <img src="https://i.ibb.co/n26GmRr/imgz4.jpg" alt="Couple Memory 1" class="gallery-image">
+                <img src="https://i.ibb.co/dqNNMTy/imgz3.jpg" alt="Couple Memory 2" class="gallery-image">
+            </div>
+
             <div class="message">
                 <h1>My Dearest Tejas ❤️</h1>
                 <p>To the most amazing person in my life, my whole world💫</p>
@@ -152,7 +222,6 @@
                 messageContent.style.display = 'block';
             }
 
-            // Add multiple event listeners for better compatibility
             giftBox.addEventListener('click', showMessage);
             giftBox.addEventListener('touchstart', showMessage);
             giftBox.addEventListener('mousedown', showMessage);
